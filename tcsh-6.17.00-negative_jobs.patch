@@ -1,0 +1,13 @@
+diff -up tcsh-6.17.00/tc.prompt.c.orig tcsh-6.17.00/tc.prompt.c
+--- tcsh-6.17.00/tc.prompt.c.orig	2010-06-17 12:40:40.422571577 +0200
++++ tcsh-6.17.00/tc.prompt.c	2010-06-17 12:41:28.628519727 +0200
+@@ -526,6 +526,9 @@ tprintf(int what, const Char *fmt, const
+ 		    int njobs = -1;
+ 		    struct process *pp;
+ 
++		    if (!proclist.p_next)
++		        njobs++;
++
+ 		    for (pp = proclist.p_next; pp; pp = pp->p_next)
+ 			njobs++;
+ 		    p = Itoa(njobs, 1, attributes);
